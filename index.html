@@ -1,4 +1,4 @@
-g<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
@@ -17,15 +17,16 @@ g<!DOCTYPE html>
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
     <title>TO DO - List</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 </head>
 
 <body>
     <div class="jumbotron">
-        <h1 class="display-4">Lista de Tarefas</h1>
+        <h1 class="display-4 text-center">Lista de Tarefas</h1>
     </div>
 
 
-    <div class="conteiner card-body">
+    <div class="card card-body" style="max-width: 800px;">
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">Titulo</span>
@@ -45,7 +46,7 @@ g<!DOCTYPE html>
         <button type="button" class="btn btn-primary btn-lg btn-block mt-3" onclick="adicionar()">ADICIONAR</button>
     </div>
 
-    <div class="conteiner card-body">
+    <div class="card card-body" style="max-width: 800px;">
         <ul id="lista" class="list-group list-group-flush"></ul>
         <button type="button" class="btn btn-primary btn-lg btn-block" onclick="listar()">LISTAR</button>
     </div>
