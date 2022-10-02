@@ -1,20 +1,20 @@
-function promessa(result){
+function promessa(result) {
     return result.json()
 }
 
-function resultado(dado){
+function resultado(dado) {
     lista.innerHTML = '';
     let backGroud;
-    let i =0;
-  
-dado.forEach(tarefa => {
-    i++;
-    if(tarefa.concluido === true){
-        backGroud = 'bg-success';
-    }else{
-        backGroud = 'bg-danger'
-    }
-    lista.innerHTML += `<li class="list-group-item">
+    let i = 0;
+
+    dado.forEach(tarefa => {
+        i++;
+        if (tarefa.concluido === true) {
+            backGroud = 'bg-success';
+        } else {
+            backGroud = 'bg-danger'
+        }
+        lista.innerHTML += `<li class="list-group-item">
     <div style="display:flex;" class="text-white ${backGroud}">
     <div class="conteiner card-body text-uppercase font-weight-bold">${tarefa.title}</div>
     <div class="conteiner card-body">${tarefa.descricao}</div>
@@ -26,8 +26,8 @@ dado.forEach(tarefa => {
     </div>
     
     </li> `;
-    
-    mondais.innerHTML +=`
+
+        mondais.innerHTML += `
     <div class="modal fade mt-5" id="modalExemplo${i}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog " role="document">
       <div class="modal-content ">
@@ -41,56 +41,60 @@ dado.forEach(tarefa => {
       </div>
     </div>
   </div>`
-}
-    
-);
+    }
+
+    );
 }
 
-function listar(){ 
+function listar() {
     let request = fetch('https://6338cdf8937ea77bfdc41851.mockapi.io/tarefas')
-    console.log(request,'request')
+    console.log(request, 'request')
     let requestDown = request.then(promessa)
-    console.log(requestDown,'dowloadr da requisição')
+    console.log(requestDown, 'dowloadr da requisição')
     requestDown.then(resultado)
 }
 
-function adicionar(){
-   
+function adicionar() {
+
     let enviar = {
         method: "POST",
-        headers:{"content-type": "application/json",},
+        headers: { "content-type": "application/json", },
         body: JSON.stringify(
-            {   "title": title.value,
-                 "descricao": description.value,
-            }), }
+            {
+                "title": title.value,
+                "descricao": description.value,
+            }),
+    }
 
-            fetch('https://6338cdf8937ea77bfdc41851.mockapi.io/tarefas',enviar).then(
-                function(respostas){
-                    console.log(respostas)
-                    document.getElementById('title').value = '';
-                    document.getElementById('description').value = '';
-                    listar();
-                })
-                
+    fetch('https://6338cdf8937ea77bfdc41851.mockapi.io/tarefas', enviar).then(
+        function (respostas) {
+            console.log(respostas)
+            document.getElementById('title').value = '';
+            document.getElementById('description').value = '';
+            listar();
+        })
+
 }
 
-function concluir(idList){
-        let enviar = {
+function concluir(idList) {
+    let enviar = {
         method: "PUT",
-        headers:{"content-type": "application/json",},
+        headers: { "content-type": "application/json", },
         body: JSON.stringify(
-            {   "concluido": true,
+            {
+                "concluido": true,
                 "id": idList,
-            }), }
+            }),
+    }
 
-            fetch(`https://6338cdf8937ea77bfdc41851.mockapi.io/tarefas/${idList}`,enviar).then(listar)
+    fetch(`https://6338cdf8937ea77bfdc41851.mockapi.io/tarefas/${idList}`, enviar).then(listar)
 }
 
-function Excluir(idList){
+function Excluir(idList) {
     let enviar = {
         method: "DELETE",
-        headers:{"content-type": "application/json",}
+        headers: { "content-type": "application/json", }
     }
-        fetch(`https://6338cdf8937ea77bfdc41851.mockapi.io/tarefas/${idList}`,enviar).then(listar);
+    fetch(`https://6338cdf8937ea77bfdc41851.mockapi.io/tarefas/${idList}`, enviar).then(listar);
 }
 
