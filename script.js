@@ -8,11 +8,11 @@ function resultado(dado) {
     let i = 0;
 
     dado.forEach(tarefa => {
-        i++;
+        i = tarefa.id;
         if (tarefa.concluido === true) {
             backGroud = 'bg-success';
         } else {
-            backGroud = 'bg-danger'
+            backGroud = 'bg-danger';
         }
         lista.innerHTML += `<li class="list-group-item">
     <div style="display:flex;" class="text-white ${backGroud}">
@@ -33,7 +33,7 @@ function resultado(dado) {
       <div class="modal-content ">
         <div class="modal-header ">
           <button type="button" class="btn btn-danger mr-3" data-dismiss="modal" onclick="Excluir(${i})">Excluir</button>
-          <button type="button" class="btn btn-primary mr-3" data-dismiss="modal" onclick="concluir(${i})">Conluir</button>
+          <button type="button" class="btn btn-primary mr-3" data-dismiss="modal" onclick="concluir(${i})">Concluir</button>
           <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
             <span aria-hidden="true">&times;</span>
           </button>
